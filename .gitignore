@@ -1,8 +1,8 @@
 node_modules/
 package-lock.json
+output/
 
 .idea/
 .DS_Store
 
 .meteor/local/build/
-

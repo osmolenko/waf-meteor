@@ -13,16 +13,16 @@ export const App = () => {
   return(
     <div>
       {user ? (
-        <>
+        <section className="coin-page">
           <Coin id={user._id}/>
           <Tosses id={user._id}/>
-          <button onClick={() => logout()}>Выйти</button>
-        </>
+          <button className="button button-logout" onClick={() => logout()}>Выйти ({user.username})</button>
+        </section>
       ) : (
-        <>
+        <section className="auth-page">
           <AuthForm login/>
           <AuthForm />
-        </>
+        </section>
       )}
     </div>
   )

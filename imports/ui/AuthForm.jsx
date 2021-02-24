@@ -5,42 +5,54 @@ import { RegisterUser } from '../api/Users';
 export const AuthForm = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const submit = e => {
     e.preventDefault();
 
     if(props.login) {
-      Meteor.loginWithPassword(username, password);
+      Meteor.loginWithPassword(username, password, function(err) {
+
+        if(err) setError(err)
+      });
     } else {
-      RegisterUser(username, password);
+      try {RegisterUser(username, password)} catch(err) {
+        console.log(err)
+        if(err) setError(err)
+      };
     }
     
   };
 
 
   return (
-    <form onSubmit={submit} className="auth-form">
-      <label htmlFor="username">Имя пользователя</label>
+    <div className={props.login ? "login-container" : "register-container"}>
+      <h3 className="auth-header">{props.login ? "Авторизация" : "Регистрация"}</h3>
+      <form onSubmit={submit} className="auth-form">
+        <label htmlFor="username" className="label-form">Имя пользователя</label>
 
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        required
-        onChange={e => setUsername(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          required
+          className="input-form"
+          onChange={e => setUsername(e.target.value)}
+        />
 
-      <label htmlFor="password">Пароль</label>
+        <label htmlFor="password" className="label-form">Пароль</label>
 
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        required
-        onChange={e => setPassword(e.target.value)}
-      />
-
-      <button type="submit">{props.login ? 'Войти' : 'Зарегистрироваться'}</button>
-    </form>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          required
+          className="input-form"
+          onChange={e => setPassword(e.target.value)}
+        />
+        {error ? <span>{error.reason}</span>: ""}
+        <button type="submit" className="button button-primary">{props.login ? 'Войти' : 'Зарегистрироваться'}</button>
+      </form>
+    </div>
   );
 };

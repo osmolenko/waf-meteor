@@ -10,8 +10,9 @@ export const Coin = (props) => {
 
     return (
         <div>
-            <p>{coinState ? "Орёл" : "Решка"}</p>
-            <button onClick={() => toss()}>Подбросить монетку</button>
+            <div className={`coin-image ${coinState ? "heads" : "tails"}`}/>
+            <p className="coin-state-text">{coinState ? "Орёл" : "Решка"}</p>
+            <button className="button button-primary" onClick={() => toss()}>Подбросить монетку</button>
         </div>
     );
 };

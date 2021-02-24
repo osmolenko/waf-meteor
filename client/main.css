@@ -1,29 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 body {
   padding: 10px;
-  font-family: sans-serif;
 }
 
-.radio-wrapper {
-  box-sizing: border-box;
-  border-radius: 50%;
+.auth-page {
+  display: grid;
+  grid-template-areas: "login register";
+  
+  margin-top: 20vh;
+  margin: 20vh 5vw 0 5vw;
+}
+
+.auth-header {
+  font-size: 36px;
+  text-align: center;
+}
+
+.login-container {
+  grid-area: login;
+}
+
+.register-container {
+  grid-area: register;
+}
+
+.auth-form, .coin-page {
+  width: 310px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.label-form {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.input-form {
+  outline: 0;
+  border: 0;
+  min-width: 300px;
+
+  padding: 13px;
+  margin: 10px 0 20px 0;
+
+  font-size: 16px;
+
+  border-radius: 28px;
   border: 1px solid #416DFE;
-  height: 20px;
-  width: 20px;
 }
 
-.radio-wrapper > div {
-  box-sizing: border-box;
-  border-radius: 50%;
-  height: 18px;
-  width: 18px;
+.button {
+  outline: 0;
+  border: 0;
+  width: 250px;
+
+  padding: 18px 0;
+  margin-top: 15px;
+
+  text-align: center;
+
+  font-weight: 600;
+  font-size: 17px;
+
+  border-radius: 70px;
 }
 
-.radio-active {
+.button-primary {
+  color: #FFF;
   background-color: #416DFE;
-  border: 5px solid #FFF;
 }
 
-.radio-inactive {
+.coin-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-image: url("{}/client/images/heads.png");
+}
+
+.coin-state-text {
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tosses-container {
+  padding: 10px 20px 20px 20px;
+  margin-top: 30px;
+  width: 600px;
+
+  border: 1px solid #416DFE;
+  border-radius: 30px;
+}
+
+.tosses-text {
+  font-weight: 400;
+  font-size: 16px;
+
+  padding: 10px 0 9px 0;
+
+  text-align: start;
+}
+
+.toss-type {
+  width: 60%;
+}
+
+.button-logout {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+
   background-color: #FFF;
-  border: none;
+  border: 1px solid #416DFE;
 }
