@@ -1,0 +1,29 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.radio-wrapper {
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid #416DFE;
+  height: 20px;
+  width: 20px;
+}
+
+.radio-wrapper > div {
+  box-sizing: border-box;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}
+
+.radio-active {
+  background-color: #416DFE;
+  border: 5px solid #FFF;
+}
+
+.radio-inactive {
+  background-color: #FFF;
+  border: none;
+}
