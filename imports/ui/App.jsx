@@ -2,7 +2,7 @@ import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Coin } from './components/Coin';
 import { Tosses } from './components/Tosses';
-import { AuthForm } from './AuthForm';
+import { AuthForm } from './components/AuthForm';
 
 export const App = () => {
 	const user = useTracker(() => Meteor.user());
@@ -13,7 +13,7 @@ export const App = () => {
 		<div>
 			{user ? (
 				<section className="coin-page">
-					<Coin id={user._id} />
+					<Coin />
 					<Tosses id={user._id} />
 					<button className="button button-logout" onClick={() => logout()}>
 						Выйти ({user.username})
