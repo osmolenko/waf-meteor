@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
-import { RegisterUser } from '../api/Users';
 
 export const AuthForm = (props) => {
   const [username, setUsername] = useState('');
@@ -12,16 +11,16 @@ export const AuthForm = (props) => {
 
     if(props.login) {
       Meteor.loginWithPassword(username, password, function(err) {
-
         if(err) setError(err)
       });
-    } else {
-      try {RegisterUser(username, password)} catch(err) {
-        console.log(err)
-        if(err) setError(err)
-      };
+    } else { 
+      Accounts.createUser({
+        username: username,
+        password: password
+      }, function(err){
+        if(err) setError(err);
+      });
     }
-    
   };
 
 
@@ -50,7 +49,7 @@ export const AuthForm = (props) => {
           className="input-form"
           onChange={e => setPassword(e.target.value)}
         />
-        {error ? <span>{error.reason}</span>: ""}
+        {error ? <span className="error">{error.reason}</span>: ""}
         <button type="submit" className="button button-primary">{props.login ? 'Войти' : 'Зарегистрироваться'}</button>
       </form>
     </div>

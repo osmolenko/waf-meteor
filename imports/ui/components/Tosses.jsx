@@ -4,7 +4,15 @@ import { CoinCollection } from '../../api/Coins';
 
 export const Tosses = (props) => {
 
-  const tosses = useTracker(() => CoinCollection.find({userId: props.id}, { sort: { createdAt: -1 }, limit: 20}).fetch())
+  const tosses = useTracker(() => {
+    Meteor.subscribe('coins');
+
+    return ({
+      list: CoinCollection.find({userId: props.id}, { sort: { createdAt: -1 }, limit: 20}).fetch()
+    })
+  })
+
+  console.log(tosses.list);
 
     return (
         <table className="tosses-container">
@@ -15,7 +23,7 @@ export const Tosses = (props) => {
             </tr>
           </thead>
           <tbody>
-            {tosses.map((toss, index) => (
+            {tosses.list.map((toss, index) => (
               <tr key={index}>
                 <td className="tosses-text toss-type">{toss.coin ? "Орёл" : "Решка"}</td>
                 <td className="tosses-text">{toss.createdAt.toLocaleString("ru", {day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "numeric", second: "numeric"})}</td>
