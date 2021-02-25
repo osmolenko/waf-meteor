@@ -77,7 +77,7 @@ input, button {
 	transition: 0.2s ease-in-out;
 }
 
-.button:hover {
+.button:hover, .buttom:active {
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -172,4 +172,30 @@ input, button {
 
 	background-color: #fff;
 	border: 1px solid #416dfe;
+}
+
+@media (max-width: 700px) {
+
+	.auth-page {
+		grid-template-areas: 'login' 'register';
+	}
+
+	.tosses-container {
+		width: auto;
+	}
+
+	.toss-type {
+		width: 60%;
+	}
+
+	.button-logout {
+		position: relative;
+		bottom: auto;
+		left: auto;
+		margin-top: 20px;
+	}
+
+	.auth-page {
+		margin-top: 20px;
+	}
 }

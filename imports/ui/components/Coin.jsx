@@ -9,6 +9,7 @@ export const Coin = () => {
 			if (err) {
 				setError(err);
 			} else {
+				setCoinState()
 				setError('');
 				setCoinState(res);
 			}
