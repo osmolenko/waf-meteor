@@ -95,13 +95,6 @@ body {
 	color: #e63946;
 }
 
-.coin-image {
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	background-image: url('{}/client/images/heads.png');
-}
-
 .coin-state-text {
 	font-size: 24px;
 	text-align: center;
@@ -137,4 +130,22 @@ body {
 
 	background-color: #fff;
 	border: 1px solid #416dfe;
+}
+
+.coin-image {
+	display: block;
+	height: 100px;
+	width: 100px;
+	margin: 0 auto;
+	
+	animation: tosscoin 0.2s;
+}
+
+.image-none {
+	display: none;
+}
+
+@keyframes tosscoin {
+	from { transform: rotateY(180deg);  }
+  to { transform: rotateY(0); }
 }

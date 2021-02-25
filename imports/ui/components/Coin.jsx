@@ -5,20 +5,20 @@ export const Coin = (props) => {
 	const [error, setError] = useState();
 
 	const toss = () => {
-		setCoinState(
-			Meteor.call('coin.toss', props.id, (err) => {
+			Meteor.call('coin.toss', props.id, (err, res) => {
 				if (err) {
 					setError(err);
 				} else {
 					setError('');
+					setCoinState(res)
 				}
-			})
-		);
+			});
 	};
 
 	return (
 		<div>
-			<div className={`coin-image ${coinState ? 'heads' : 'tails'}`} />
+			<img src='heads.png' className={`coin-image ${coinState ? 'image-none' : ''}`}/>
+			<img src='tails.png' className={`coin-image ${coinState ? '' : 'image-none'}`} />
 			<p className="coin-state-text">{coinState ? 'Орёл' : 'Решка'}</p>
 			<button className="button button-primary" onClick={() => toss()}>
 				Подбросить монетку
