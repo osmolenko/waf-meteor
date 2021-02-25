@@ -12,15 +12,15 @@ export const App = () => {
 	return (
 		<div>
 			{user ? (
-				<section className="coin-page">
+				<section className='coin-page'>
 					<Coin />
 					<Tosses id={user._id} />
-					<button className="button button-logout" onClick={() => logout()}>
+					<button className='button button-logout' onClick={() => logout()}>
 						Выйти ({user.username})
 					</button>
 				</section>
 			) : (
-				<section className="auth-page">
+				<section className='auth-page'>
 					<AuthForm login />
 					<AuthForm />
 				</section>

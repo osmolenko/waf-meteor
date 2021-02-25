@@ -18,18 +18,18 @@ export const Coin = () => {
 	return (
 		<div>
 			<img
-				src="heads.png"
+				src='heads.png'
 				className={`coin-image ${coinState ? 'image-none' : ''}`}
 			/>
 			<img
-				src="tails.png"
+				src='tails.png'
 				className={`coin-image ${!coinState ? 'image-none' : ''}`}
 			/>
-			<p className="coin-state-text">{coinState ? 'Орёл' : 'Решка'}</p>
-			<button className="button button-primary" onClick={() => toss()}>
+			<p className='coin-state-text'>{coinState ? 'Орёл' : 'Решка'}</p>
+			<button className='button button-primary' onClick={() => toss()}>
 				Подбросить монетку
 			</button>
-			{error ? <span className="error">{error.error}</span> : ''}
+			{error ? <span className='error'>{error.error}</span> : ''}
 		</div>
 	);
 };

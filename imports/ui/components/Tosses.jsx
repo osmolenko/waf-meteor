@@ -46,13 +46,13 @@ export const Tosses = (props) => {
 
 	return (
 		<>
-			<table className="tosses-container">
+			<table className='tosses-container'>
 				<thead>
 					<tr>
-						<th className="tosses-text toss-type">
+						<th className='tosses-text toss-type'>
 							<b>Что выпало?</b>
 						</th>
-						<th className="tosses-text">
+						<th className='tosses-text'>
 							<b>Когда?</b>
 						</th>
 					</tr>
@@ -60,10 +60,10 @@ export const Tosses = (props) => {
 				<tbody>
 					{tosses.map((toss, index) => (
 						<tr key={index}>
-							<td className="tosses-text toss-type">
+							<td className='tosses-text toss-type'>
 								{toss.coin ? 'Орёл' : 'Решка'}
 							</td>
-							<td className="tosses-text">
+							<td className='tosses-text'>
 								{toss.createdAt.toLocaleString('ru', {
 									day: 'numeric',
 									month: 'long',
@@ -77,10 +77,10 @@ export const Tosses = (props) => {
 					))}
 				</tbody>
 			</table>
-			{error ? <span className="error">{error}</span> : ''}
-			<div className="pagination-container">
-				<button className="pagination-button" onClick={() => changeTossesCountHandler(false)}>ᐊ</button>
-				<button className="pagination-button" onClick={() => changeTossesCountHandler(true)}>ᐅ</button>
+			{error ? <span className='error'>{error}</span> : ''}
+			<div className='pagination-container'>
+				<button className='pagination-button' onClick={() => changeTossesCountHandler(false)}>ᐊ</button>
+				<button className='pagination-button' onClick={() => changeTossesCountHandler(true)}>ᐅ</button>
 			</div>
 		</>
 	);
