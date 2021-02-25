@@ -1,17 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
+import { errorHandler } from '../common/errorHandler';
 
 export const AuthForm = (props) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
+	const [isLogin, setIsLogin] = useState(true);
 
 	const submit = (e) => {
 		e.preventDefault();
 
-		if (props.login) {
+		if (isLogin) {
 			Meteor.loginWithPassword(username, password, function (err) {
-				if (err) setError(err);
+				if (err) setError(errorHandler(err.reason));
 			});
 		} else {
 			Accounts.createUser(
@@ -20,16 +22,16 @@ export const AuthForm = (props) => {
 					password: password,
 				},
 				function (err) {
-					if (err) setError(err);
+					if (err) setError(errorHandler(err.reason));
 				}
 			);
 		}
 	};
 
 	return (
-		<div className={props.login ? 'login-container' : 'register-container'}>
+		<div>
 			<h3 className='auth-header'>
-				{props.login ? 'Авторизация' : 'Регистрация'}
+				{isLogin ? 'Авторизация' : 'Регистрация'}
 			</h3>
 			<form onSubmit={submit} className='auth-form'>
 				<label htmlFor='username' className='label-form'>
@@ -38,7 +40,7 @@ export const AuthForm = (props) => {
 
 				<input
 					type='text'
-					placeholder='Username'
+					placeholder='Имя пользователя'
 					name='username'
 					required
 					className='input-form'
@@ -51,17 +53,19 @@ export const AuthForm = (props) => {
 
 				<input
 					type='password'
-					placeholder='Password'
+					placeholder='Пароль'
 					name='password'
 					required
 					className='input-form'
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				{error ? <span className='error'>{error.reason}</span> : ''}
+				{error ? <span className='error'>{error}</span> : ''}
 				<button type='submit' className='button button-primary'>
-					{props.login ? 'Войти' : 'Зарегистрироваться'}
+					{isLogin ? 'Войти' : 'Зарегистрироваться'}
 				</button>
 			</form>
+			<p className='label-form auth-question'>{isLogin ? 'Нет аккаунта?' : 'Есть аккаунт?'}</p>
+			<button className='button button-secondary auth-button' onClick={() => isLogin ? setIsLogin(false) : setIsLogin(true)}>{isLogin ? 'Зарегистрироваться' : 'Войти'}</button>
 		</div>
 	);
 };
