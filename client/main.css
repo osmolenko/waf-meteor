@@ -12,11 +12,11 @@ input, button {
 }
 
 .auth-page {
-	display: grid;
-	grid-template-areas: 'login register';
+	display: flex;
+	justify-content: center;
+	text-align: center;
 
-	margin-top: 20vh;
-	margin: 20vh 5vw 0 5vw;
+	margin: 5vh 5vw 0 5vw;
 }
 
 .auth-header {
@@ -24,12 +24,12 @@ input, button {
 	text-align: center;
 }
 
-.login-container {
-	grid-area: login;
+.auth-question {
+	margin-top: 10vh;
 }
 
-.register-container {
-	grid-area: register;
+.auth-button {
+	margin-top: 5px !important;
 }
 
 .auth-form,
@@ -78,12 +78,27 @@ input, button {
 }
 
 .button:hover, .buttom:active {
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
 .button-primary {
-	color: #fff;
+	color: #FFF;
 	background-color: #416dfe;
+}
+
+.button-primary:hover {
+	color: #000;
+	background-color: #FFF;
+}
+
+.button-secondary {
+	background-color: #fff;
+	border: 1px solid #416dfe;
+}
+
+.button-secondary:hover {
+	background-color: #416dfe;
+	color: #FFF;
 }
 
 .error {
@@ -147,6 +162,7 @@ input, button {
 .pagination-button {
 	height: 48px;
 	width: 48px;
+	cursor: pointer;
 	border-radius: 50%;
 	border: 1px solid #416dfe;
 
@@ -157,7 +173,7 @@ input, button {
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
 	background-color: #FFF;
 
-	transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in;
 }
 
 .pagination-button:hover {
@@ -165,20 +181,23 @@ input, button {
 	color: #FFF;
 }
 
+.pagination-inactive {
+	cursor: not-allowed;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.pagination-inactive:hover {
+	color: inherit;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
 .button-logout {
 	position: fixed;
 	bottom: 15px;
 	left: 15px;
-
-	background-color: #fff;
-	border: 1px solid #416dfe;
 }
 
 @media (max-width: 700px) {
-
-	.auth-page {
-		grid-template-areas: 'login' 'register';
-	}
 
 	.tosses-container {
 		width: auto;
@@ -196,6 +215,6 @@ input, button {
 	}
 
 	.auth-page {
-		margin-top: 20px;
+		margin-top: 15vh;
 	}
 }
