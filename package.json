@@ -1,5 +1,5 @@
 {
-  "name": "waf",
+  "name": "waf-meteor",
   "private": true,
   "scripts": {
     "start": "meteor run",
